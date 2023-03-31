@@ -1,6 +1,6 @@
 Name:		texlive-simpler-wick
 Version:	39074
-Release:	1
+Release:	2
 Summary:	Simpler Wick contractions
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/macros/latex/contrib/simpler-wick
