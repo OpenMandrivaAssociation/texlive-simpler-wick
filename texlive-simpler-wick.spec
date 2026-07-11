@@ -1,43 +1,27 @@
-Name:		texlive-simpler-wick
-Version:	71991
-Release:	1
+%global tl_name simpler-wick
+%global tl_revision 79618
+
+Name:		texlive-%{tl_name}
+Epoch:		1
+Version:	1.0.0
+Release:	%{tl_revision}.1
 Summary:	Simpler Wick contractions
 Group:		Publishing
 URL:		https://www.ctan.org/tex-archive/macros/latex/contrib/simpler-wick
 License:	lppl1.3
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/simpler-wick.r%{version}.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/simpler-wick.doc.r%{version}.tar.xz
+Source0:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/simpler-wick.r%{tl_revision}.tar.xz
+Source1:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/simpler-wick.doc.r%{tl_revision}.tar.xz
 BuildArch:	noarch
-BuildRequires:	texlive-tlpkg
-Requires(pre):	texlive-tlpkg
-Requires(post):	texlive-kpathsea
+BuildSystem:	texlive
+Provides:	texlive(%{tl_name}) = %{tl_revision}
 
 %description
-In every quantum field theory course, there will be a chapter
-about Wick's theorem and how it can be used to convert a very
-large product of many creation and annihilation operators into
-something more tractable and normal ordered. The contractions
-are denoted with a square bracket over the operators which are
-being contracted, which used to be rather annoying to typeset
-in LaTeX as the only other package available was simplewick,
-which is rather unwieldy. This package provides a simpler
+In every quantum field theory course, there will be a chapter about
+Wick's theorem and how it can be used to convert a very large product of
+many creation and annihilation operators into something more tractable
+and normal ordered. The contractions are denoted with a square bracket
+over the operators which are being contracted, which used to be rather
+annoying to typeset in LaTeX as the only other package available was
+simplewick, which is rather unwieldy. This package provides a simpler
 syntax for Wick contractions.
 
-%prep
-%autosetup -p1 -c -a1
-
-%build
-
-%install
-rm -rf tlpkg
-mkdir -p %{buildroot}%{_texmfdistdir}
-cp -a * %{buildroot}%{_texmfdistdir}
-
-%files
-%{_texmfdistdir}/tex/latex/simpler-wick
-%doc %{_texmfdistdir}/doc/latex/simpler-wick
-
-%post -p %{_sbindir}/texlive.post
-
-%postun
-[ "$1" -eq 0 ] && %{_sbindir}/texlive.post
